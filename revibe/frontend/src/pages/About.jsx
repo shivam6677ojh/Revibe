@@ -1,10 +1,14 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
+
 export default function About() {
+  useScrollAnimation();
+  
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors py-12">
       <div className="container mx-auto px-6 md:px-12 max-w-5xl">
         
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-slide-down">
           <h1 className="text-5xl md:text-6xl font-black text-slate-800 dark:text-white mb-4">
             About ReVibe
           </h1>
@@ -12,7 +16,7 @@ export default function About() {
         </div>
 
         {/* Mission */}
-        <section className="mb-16 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-800 dark:to-slate-700 p-10 rounded-3xl shadow-xl">
+        <section className="mb-16 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-800 dark:to-slate-700 p-10 rounded-3xl shadow-xl animate-on-scroll">
           <h2 className="text-3xl md:text-4xl font-bold text-emerald-700 dark:text-emerald-400 mb-6 flex items-center gap-3">
             <span>🎯</span> Our Mission
           </h2>
@@ -26,7 +30,7 @@ export default function About() {
 
         {/* What We Believe */}
         <section className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-8 flex items-center gap-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-8 flex items-center gap-3 animate-on-scroll">
             <span>💡</span> What We Believe
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -36,7 +40,7 @@ export default function About() {
               'Small actions create big change',
               'Technology can inspire greener habits'
             ].map((belief, i) => (
-              <div key={i} className="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-lg border-l-4 border-emerald-500 hover:shadow-xl transition-shadow">
+              <div key={i} className={`bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-lg border-l-4 border-emerald-500 hover:shadow-xl transition-all hover-lift animate-on-scroll delay-${(i + 1) * 100}`}>
                 <p className="text-lg font-semibold text-slate-800 dark:text-white flex items-start gap-3">
                   <span className="text-emerald-600 dark:text-emerald-400 text-2xl">✓</span>
                   {belief}
@@ -47,7 +51,7 @@ export default function About() {
         </section>
 
         {/* How We Started */}
-        <section className="mb-16 bg-white dark:bg-slate-800 p-10 rounded-3xl shadow-xl">
+        <section className="mb-16 bg-white dark:bg-slate-800 p-10 rounded-3xl shadow-xl animate-on-scroll">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-6 flex items-center gap-3">
             <span>🌱</span> How We Started
           </h2>
@@ -58,7 +62,7 @@ export default function About() {
 
         {/* Core Values */}
         <section>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-10 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-10 text-center animate-on-scroll">
             Core Values
           </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -69,7 +73,7 @@ export default function About() {
               { icon: '🎉', title: 'Joy', color: 'from-yellow-500 to-orange-600' },
               { icon: '🎖', title: 'Gamification', color: 'from-red-500 to-rose-600' }
             ].map((value, i) => (
-              <div key={i} className="text-center">
+              <div key={i} className={`text-center animate-scale delay-${(i + 1) * 100}`}>
                 <div className={`bg-gradient-to-br ${value.color} w-24 h-24 mx-auto rounded-full flex items-center justify-center text-5xl shadow-2xl mb-4 hover:scale-110 transition-transform`}>
                   {value.icon}
                 </div>

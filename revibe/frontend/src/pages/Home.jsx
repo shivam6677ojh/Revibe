@@ -1,27 +1,31 @@
 import { Link } from 'react-router-dom';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function Home() {
+  useScrollAnimation();
+  
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-emerald-600 via-teal-700 to-cyan-800 dark:from-emerald-800 dark:via-teal-900 dark:to-cyan-950 text-white py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-green-400 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-400 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-green-400 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-400 rounded-full blur-3xl animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-teal-400 rounded-full blur-3xl animate-pulse"></div>
         </div>
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight animate-slide-down">
               ReVibe — <span className="text-green-300">Celebrate Sustainably.</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-green-50 leading-relaxed">
+            <p className="text-xl md:text-2xl mb-8 text-green-50 leading-relaxed animate-slide-down delay-100">
               Discover eco-friendly local events and track your impact.
             </p>
-            <p className="text-lg md:text-xl mb-12 text-green-100 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl mb-12 text-green-100 max-w-2xl mx-auto animate-slide-down delay-200">
               Join the movement that brings joy back to communities — without harming the planet.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/events" className="bg-white text-emerald-700 px-8 py-4 rounded-full text-lg font-bold shadow-2xl hover:bg-green-50 hover:scale-105 transition-all cursor-pointer">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-down delay-300">
+              <Link to="/events" className="bg-white text-emerald-700 px-8 py-4 rounded-full text-lg font-bold shadow-2xl hover:bg-green-50 hover:scale-105 hover-glow transition-all cursor-pointer animate-bounce">
                 🌿 Explore Events
               </Link>
               <Link to="/create" className="bg-emerald-500/20 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-emerald-500/30 hover:scale-105 transition-all cursor-pointer">
@@ -35,30 +39,30 @@ export default function Home() {
       {/* Why ReVibe Section */}
       <section className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors">
         <div className="container mx-auto px-6 md:px-12">
-          <h2 className="text-4xl md:text-5xl font-black text-center text-slate-800 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-black text-center text-slate-800 dark:text-white mb-6 animate-on-scroll">
             Why ReVibe?
           </h2>
-          <p className="text-xl text-center text-slate-600 dark:text-slate-300 mb-12 max-w-3xl mx-auto">
+          <p className="text-xl text-center text-slate-600 dark:text-slate-300 mb-12 max-w-3xl mx-auto animate-on-scroll delay-100">
             Communities are rebuilding joy through meaningful, eco-conscious gatherings.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            <div className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
-              <div className="text-5xl mb-4">🌍</div>
+            <div className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all hover-lift animate-scale delay-100">
+              <div className="text-5xl mb-4 animate-pulse">🌍</div>
               <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">Find Sustainable Festivals</h3>
               <p className="text-slate-600 dark:text-slate-300">Discover eco-friendly events near you</p>
             </div>
-            <div className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
-              <div className="text-5xl mb-4">📊</div>
+            <div className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all hover-lift animate-scale delay-200">
+              <div className="text-5xl mb-4 animate-bounce">📊</div>
               <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">Track Your Footprint</h3>
               <p className="text-slate-600 dark:text-slate-300">Learn your carbon impact before attending</p>
             </div>
-            <div className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
-              <div className="text-5xl mb-4">🏅</div>
+            <div className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all hover-lift animate-scale delay-300">
+              <div className="text-5xl mb-4 animate-float">🏅</div>
               <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">Earn Green Badges</h3>
               <p className="text-slate-600 dark:text-slate-300">Get rewarded for sustainable actions</p>
             </div>
-            <div className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
-              <div className="text-5xl mb-4">🤝</div>
+            <div className="bg-white dark:bg-slate-700 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all hover-lift animate-scale delay-400">
+              <div className="text-5xl mb-4 animate-pulse">🤝</div>
               <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">Support Local Organizers</h3>
               <p className="text-slate-600 dark:text-slate-300">Back those who care about the planet</p>
             </div>
@@ -69,7 +73,7 @@ export default function Home() {
       {/* Featured Events */}
       <section className="py-20 bg-white dark:bg-slate-900 transition-colors">
         <div className="container mx-auto px-6 md:px-12">
-          <h2 className="text-4xl md:text-5xl font-black text-center text-slate-800 dark:text-white mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-center text-slate-800 dark:text-white mb-16 animate-on-scroll">
             Featured Eco-Events
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
@@ -79,8 +83,8 @@ export default function Home() {
               { name: 'EcoArt Pop-Up', desc: 'Recycled materials art showcase', emoji: '🎨' },
               { name: 'Nature Walk Meetup', desc: 'Guided hike + climate tips', emoji: '🥾' }
             ].map((event, i) => (
-              <div key={i} className="bg-gradient-to-br from-green-50 to-cyan-50 dark:from-slate-700 dark:to-slate-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all">
-                <div className="text-5xl mb-4">{event.emoji}</div>
+              <div key={i} className={`bg-gradient-to-br from-green-50 to-cyan-50 dark:from-slate-700 dark:to-slate-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl hover-lift transition-all animate-on-scroll delay-${(i + 1) * 100}`}>
+                <div className="text-5xl mb-4 animate-bounce" style={{animationDelay: `${i * 0.2}s`}}>{event.emoji}</div>
                 <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">{event.name}</h3>
                 <p className="text-slate-600 dark:text-slate-300 mb-4">{event.desc}</p>
                 <Link to="/events" className="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">
@@ -89,8 +93,8 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-12">
-            <Link to="/events" className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-10 py-4 rounded-full text-lg font-bold shadow-xl hover:scale-105 transition-transform inline-block cursor-pointer">
+          <div className="text-center mt-12 animate-on-scroll delay-500">
+            <Link to="/events" className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-10 py-4 rounded-full text-lg font-bold shadow-xl hover:scale-105 hover-glow transition-all inline-block cursor-pointer animate-pulse">
               View All Events
             </Link>
           </div>
@@ -100,7 +104,7 @@ export default function Home() {
       {/* How ReVibe Works */}
       <section className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 transition-colors">
         <div className="container mx-auto px-6 md:px-12">
-          <h2 className="text-4xl md:text-5xl font-black text-center text-slate-800 dark:text-white mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-center text-slate-800 dark:text-white mb-16 animate-on-scroll">
             How ReVibe Works
           </h2>
           <div className="max-w-4xl mx-auto space-y-8">
@@ -111,13 +115,13 @@ export default function Home() {
               { step: 4, text: 'Earn reward badges for your actions', icon: '🎖️' },
               { step: 5, text: 'Share your impact with the community', icon: '🌐' }
             ].map(item => (
-              <div key={item.step} className="flex items-start gap-6 bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center text-white text-2xl font-black">
+              <div key={item.step} className={`flex items-start gap-6 bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all hover-lift animate-fade-left delay-${item.step * 100}`}>
+                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center text-white text-2xl font-black animate-pulse">
                   {item.step}
                 </div>
                 <div className="flex-1">
                   <p className="text-2xl font-bold text-slate-800 dark:text-white flex items-center gap-3">
-                    <span>{item.icon}</span>
+                    <span className="animate-float" style={{animationDelay: `${item.step * 0.2}s`}}>{item.icon}</span>
                     {item.text}
                   </p>
                 </div>
@@ -130,15 +134,17 @@ export default function Home() {
       {/* Join the Movement CTA */}
       <section className="py-20 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-700 dark:from-emerald-900 dark:via-teal-900 dark:to-cyan-900 text-white">
         <div className="container mx-auto px-6 md:px-12 text-center">
-          <h2 className="text-4xl md:text-6xl font-black mb-6">
+          <h2 className="text-4xl md:text-6xl font-black mb-6 animate-on-scroll">
             Join the Movement
           </h2>
-          <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-green-50">
+          <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-green-50 animate-on-scroll delay-100">
             Celebrate, connect, and protect the planet — one event at a time.
           </p>
-          <Link to="/events" className="bg-white text-emerald-700 px-12 py-5 rounded-full text-xl font-bold shadow-2xl hover:bg-green-50 hover:scale-110 transition-all inline-block cursor-pointer">
-            Get Started 🚀
-          </Link>
+          <div className="animate-on-scroll delay-200">
+            <Link to="/events" className="bg-white text-emerald-700 px-12 py-5 rounded-full text-xl font-bold shadow-2xl hover:bg-green-50 hover:scale-110 hover-glow transition-all inline-block cursor-pointer animate-bounce">
+              Get Started 🚀
+            </Link>
+          </div>
         </div>
       </section>
     </div>

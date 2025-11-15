@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useApi } from '../api/axios';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function Contact() {
+  useScrollAnimation();
+  
   const api = useApi();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -29,7 +32,7 @@ export default function Contact() {
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-emerald-50 to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors py-12">
       <div className="container mx-auto px-6 md:px-12 max-w-5xl">
         
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-slide-down">
           <h1 className="text-5xl md:text-6xl font-black text-slate-800 dark:text-white mb-4">
             📩 Get in Touch
           </h1>
@@ -41,7 +44,7 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-8">
           
           {/* Contact Form */}
-          <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl p-8">
+          <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl p-8 animate-on-scroll">
             <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">Send Us a Message</h2>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -113,7 +116,7 @@ export default function Contact() {
           <div className="space-y-6">
             
             {/* Support Topics */}
-            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl p-8">
+            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl p-8 animate-on-scroll delay-100">
               <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">
                 💡 Support Topics
               </h2>
@@ -134,7 +137,7 @@ export default function Contact() {
             </div>
 
             {/* Contact Info */}
-            <div className="bg-gradient-to-br from-emerald-600 to-teal-700 dark:from-emerald-800 dark:to-teal-900 rounded-3xl shadow-xl p-8 text-white">
+            <div className="bg-gradient-to-br from-emerald-600 to-teal-700 dark:from-emerald-800 dark:to-teal-900 rounded-3xl shadow-xl p-8 text-white animate-on-scroll delay-200">
               <h2 className="text-2xl font-bold mb-6">📧 Direct Contact</h2>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -168,7 +171,7 @@ export default function Contact() {
             </div>
 
             {/* Social Media */}
-            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl p-8">
+            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl p-8 animate-on-scroll delay-300">
               <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">
                 🌐 Follow Us
               </h2>

@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function CarbonCalculator() {
+  useScrollAnimation();
+  
   const [transport, setTransport] = useState('car');
   const [distance, setDistance] = useState(10);
   const [food, setFood] = useState('mixed');
@@ -41,7 +44,7 @@ export default function CarbonCalculator() {
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-teal-50 to-emerald-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors py-12">
       <div className="container mx-auto px-6 md:px-12 max-w-4xl">
         
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-slide-down">
           <h1 className="text-5xl md:text-6xl font-black text-slate-800 dark:text-white mb-4">
             🌍 Carbon Calculator
           </h1>
@@ -53,10 +56,10 @@ export default function CarbonCalculator() {
           </p>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl p-8 md:p-12">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl p-8 md:p-12 animate-on-scroll">
           
           {/* Transport */}
-          <div className="mb-8">
+          <div className="mb-8 animate-on-scroll delay-100">
             <label className="block text-lg font-bold text-slate-800 dark:text-white mb-3">
               🚗 Mode of Transport
             </label>
@@ -75,7 +78,7 @@ export default function CarbonCalculator() {
           </div>
 
           {/* Distance */}
-          <div className="mb-8">
+          <div className="mb-8 animate-on-scroll delay-200">
             <label className="block text-lg font-bold text-slate-800 dark:text-white mb-3">
               📏 Distance to Event (km): {distance}
             </label>
@@ -90,7 +93,7 @@ export default function CarbonCalculator() {
           </div>
 
           {/* Food */}
-          <div className="mb-8">
+          <div className="mb-8 animate-on-scroll delay-300">
             <label className="block text-lg font-bold text-slate-800 dark:text-white mb-3">
               🍽️ Food Choices
             </label>
@@ -116,7 +119,7 @@ export default function CarbonCalculator() {
           </div>
 
           {/* Reusables */}
-          <div className="mb-8">
+          <div className="mb-8 animate-on-scroll delay-400">
             <label className="flex items-center gap-3 cursor-pointer">
               <input 
                 type="checkbox" 
@@ -131,7 +134,7 @@ export default function CarbonCalculator() {
           </div>
 
           {/* Duration */}
-          <div className="mb-10">
+          <div className="mb-10 animate-on-scroll delay-500">
             <label className="block text-lg font-bold text-slate-800 dark:text-white mb-3">
               ⏱️ Time Spent at Event (hours): {duration}
             </label>

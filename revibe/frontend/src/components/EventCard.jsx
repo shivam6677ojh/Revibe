@@ -27,7 +27,7 @@ export default function EventCard({ event, currentUserId, onDelete }) {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+    <div className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover-lift">
       <h3 className="text-2xl font-bold mb-3">
         <Link to={`/events/${event._id}`} className="text-emerald-700 dark:text-emerald-400 hover:text-teal-600 dark:hover:text-teal-300 transition-colors no-underline">
           {event.title}

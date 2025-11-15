@@ -1,10 +1,31 @@
+import { useState } from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
+
 export default function Community() {
+  useScrollAnimation();
+  const [joinedChallenges, setJoinedChallenges] = useState(new Set());
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleJoinChallenge = (challengeName) => {
+    setJoinedChallenges(prev => new Set([...prev, challengeName]));
+    setShowSuccess(true);
+    setTimeout(() => setShowSuccess(false), 3000);
+  };
+  
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors py-12">
       <div className="container mx-auto px-6 md:px-12 max-w-6xl">
         
+        {/* Success Message */}
+        {showSuccess && (
+          <div className="fixed top-24 right-6 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-2xl shadow-2xl z-50 animate-slide-down flex items-center gap-3">
+            <span className="text-2xl">✓</span>
+            <span className="font-bold text-lg">Challenge Joined Successfully!</span>
+          </div>
+        )}
+
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-slide-down">
           <h1 className="text-5xl md:text-6xl font-black text-slate-800 dark:text-white mb-4">
             👫 Community
           </h1>
@@ -18,7 +39,7 @@ export default function Community() {
 
         {/* Community Features */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-8">
+          <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-8 animate-on-scroll">
             Community Features
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -28,7 +49,7 @@ export default function Community() {
               { icon: '👥', title: 'Local Group Chats', desc: 'Connect with nearby members planning green gatherings' },
               { icon: '🎯', title: 'Challenges & Streaks', desc: 'Complete eco-missions like "Attend 3 low-impact events this month"' }
             ].map((feature, i) => (
-              <div key={i} className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-800 dark:to-slate-700 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all">
+              <div key={i} className={`bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-800 dark:to-slate-700 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover-lift animate-on-scroll delay-${(i + 1) * 100}`}>
                 <div className="text-5xl mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">{feature.title}</h3>
                 <p className="text-slate-600 dark:text-slate-300">{feature.desc}</p>
@@ -39,7 +60,7 @@ export default function Community() {
 
         {/* Active Challenges */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-8">
+          <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-8 animate-on-scroll">
             🔥 Challenges You Can Join
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -63,7 +84,7 @@ export default function Community() {
                 color: 'from-purple-500 to-pink-600'
               }
             ].map((challenge, i) => (
-              <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden hover:-translate-y-1 transition-transform">
+              <div key={i} className={`bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden transition-all hover-lift animate-on-scroll delay-${(i + 1) * 100}`}>
                 <div className={`bg-gradient-to-r ${challenge.color} h-3`}></div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">{challenge.name}</h3>
@@ -72,15 +93,23 @@ export default function Community() {
                     <span className="text-sm text-slate-500 dark:text-slate-400">
                       👥 {challenge.participants} joined
                     </span>
-                    <button className="bg-emerald-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-emerald-700 transition-colors cursor-pointer">
-                      Join
+                    <button 
+                      onClick={() => handleJoinChallenge(challenge.name)}
+                      disabled={joinedChallenges.has(challenge.name)}
+                      className={`px-6 py-2 rounded-full font-semibold transition-all cursor-pointer ${
+                        joinedChallenges.has(challenge.name)
+                          ? 'bg-slate-400 text-white cursor-not-allowed'
+                          : 'bg-emerald-600 text-white hover:bg-emerald-700 hover:scale-105'
+                      }`}
+                    >
+                      {joinedChallenges.has(challenge.name) ? '✓ Joined' : 'Join'}
                     </button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
+          <div className="text-center mt-8 animate-on-scroll delay-400">
             <button className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-10 py-4 rounded-full text-lg font-bold shadow-xl hover:scale-105 transition-transform cursor-pointer">
               View All Challenges
             </button>
