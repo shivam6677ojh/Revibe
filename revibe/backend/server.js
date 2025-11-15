@@ -8,6 +8,7 @@ const eventRoutes = require('./routes/events');
 const rsvpRoutes = require('./routes/rsvps');
 const adminRoutes = require('./routes/admin');
 const badgeRoutes = require('./routes/badges');
+const contactRoutes = require('./routes/contact');
 
 const app = express();
 app.use(cors({ origin: '*'}));
@@ -30,6 +31,7 @@ app.use('/events', eventRoutes);
 app.use('/rsvps', rsvpRoutes);
 app.use('/admin', adminRoutes);
 app.use('/badges', badgeRoutes);
+app.use('/contact', contactRoutes);
 
 app.use((err, _req, res, _next) => {
   console.error(err);

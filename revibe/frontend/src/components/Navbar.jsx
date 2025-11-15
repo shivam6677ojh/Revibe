@@ -27,13 +27,13 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
-            <button 
+            {/* <button 
               onClick={toggleTheme}
               className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors text-2xl cursor-pointer"
               aria-label="Toggle dark mode"
             >
               {theme === 'light' ? '🌙' : '☀️'}
-            </button>
+            </button> */}
 
             <SignedOut>
               <SignInButton mode="modal">

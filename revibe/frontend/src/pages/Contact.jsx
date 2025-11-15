@@ -1,13 +1,28 @@
 import { useState } from 'react';
+import { useApi } from '../api/axios';
 
 export default function Contact() {
+  const api = useApi();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setLoading(true);
+    setError('');
+    
+    try {
+      await api.post('/contact/send', formData);
+      setSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (err) {
+      setError(err.response?.data?.error || 'Failed to send message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -74,14 +89,21 @@ export default function Contact() {
 
               <button 
                 type="submit"
-                className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 rounded-xl text-lg font-bold shadow-xl hover:scale-105 transition-transform cursor-pointer"
+                disabled={loading}
+                className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 rounded-xl text-lg font-bold shadow-xl hover:scale-105 transition-transform cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message ✉️
+                {loading ? 'Sending...' : 'Send Message ✉️'}
               </button>
+
+              {error && (
+                <div className="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 p-4 rounded-xl text-center font-semibold">
+                  ✗ {error}
+                </div>
+              )}
 
               {submitted && (
                 <div className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 p-4 rounded-xl text-center font-semibold">
-                  ✓ Message sent successfully!
+                  ✓ Message sent successfully! Check your email for confirmation.
                 </div>
               )}
             </form>

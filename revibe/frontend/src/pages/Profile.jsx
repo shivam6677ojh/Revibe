@@ -15,9 +15,14 @@ export default function Profile() {
         setDbUser(r.data);
         setStats({
           eventsCreated: r.data.eventsCreated?.length || 0,
-          badges: r.data.badges?.length || 0
+          badges: 0
         });
       });
+      
+      // Fetch actual badge count
+      api.get('/badges').then(r => {
+        setStats(prev => ({ ...prev, badges: r.data.length }));
+      }).catch(err => console.error('Failed to fetch badges:', err));
     }
   }, [user, api]);
   
